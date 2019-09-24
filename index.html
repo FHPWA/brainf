@@ -1,0 +1,167 @@
+﻿<!DOCTYPE html>
+<html lang="en-GB">
+
+<head>
+	<meta charset="utf-8">
+	<link rel="stylesheet" type="text/css" href="https://fredhappyface.github.io/css/main.css">
+	<link rel="stylesheet" type="text/css" href="css/main.css">
+	<script>
+		if ("serviceWorker" in navigator) {
+			window.addEventListener("load", function () {
+				navigator.serviceWorker.register("/PWA.Brainf/sw.js", {scope: "/PWA.Brainf/"}).then(
+					function (registration) {
+						// Registration was successful
+						console.log("ServiceWorker registration successful with scope: ", registration.scope);
+					},
+					function (err) {
+						// registration failed :(
+						console.log("ServiceWorker registration failed: ", err);
+					});
+			});
+		}
+
+		var DEFAULT = {
+			theme: 'auto',
+			text: '1',
+		};
+
+		var data;
+		/* read data from local storage */
+		if (localStorage.getItem('com.fredhappyface') !== null) {
+			data = JSON.parse(localStorage.getItem('com.fredhappyface'));
+		}
+		else {
+			console.log('Your Browser does not support local storage or no data saved. Loading default data.');
+			data = DEFAULT;
+		}
+
+		// set the theme to the appropriate css
+		document.head.innerHTML += '<link rel="stylesheet" href="https://fredhappyface.github.io/css/theme/' + data.theme + '.css"  id="theme">';
+
+		// set the text size
+		var declaration = document.styleSheets[0].cssRules[0].style;
+		declaration.setProperty("--text-mod", data.text)
+	</script>
+
+	<meta name="Description" content="Author: FredHappyface; Category: Cryptography,
+	Proof of concept; Cost: Free">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+	<!--Android app icon-->
+	<link rel="manifest" href="/PWA.Brainf/manifest.json">
+	<meta name="theme-color" content="#e23834" />
+
+	<!--iOS touch icon-->
+	<link rel="apple-touch-icon" sizes="180x180" href="images/appicons/square-180.png">
+
+	<!--Bookmark, Browser favicon-->
+	<link rel="icon" type="image/png" sizes="256x256" href="images/appicons/squircle-256.png">
+	<link rel="icon" type="image/png" sizes="32x32" href="images/appicons/squircle-256.png">
+
+	<!--Windows 8, 10 tile -->
+	<meta name="msapplication-TileColor" content="#e23834">
+	<meta name="msapplication-TileImage" sizes="310x310" content="images/appicons/square-512.png">
+	<meta name="msapplication-starturl" content="/PWA.Brainf/">
+
+	<!--Title-->
+	<title>Brainf</title>
+
+
+</head>
+
+<body>
+
+
+	<div class="section--app-bar c-app-bar--brainf">
+
+		<div class="app-bar">
+			<div class="section__content">
+				<div class="left">
+					<h2>Happy Shibe</h2>
+				</div>
+				<div class="pair pair--item right">
+					<a href="https://fredhappyface.github.io/PWA.Home/info.html">
+						<div class="img img--scale app__icon" style="width: 2.5em;">
+							<img src="images/pageicons/round-info-white-24px.svg" alt="Information">
+						</div>
+					</a>
+					<a href="https://fredhappyface.github.io/PWA.Home/settings.html">
+						<div class="img img--scale app__icon" style="width: 2.5em;">
+							<img src="images/pageicons/round-settings-white-24px.svg" alt="settings">
+						</div>
+					</a>
+				</div>
+			</div>
+		</div>
+
+
+	</div>
+
+	<div class="buffer--app-bar">
+	</div>
+
+	<div id="js-toast" >
+		<div><p id="js-toast__text" class="c-toast"></p></div>
+	</div>
+
+	<div class="section c-secondary">
+		<div class="section__content">
+
+			<h1> Brainf Interpreter</h1>
+
+		</div>
+	</div>
+
+	<div class="section c-primary">
+		<div class="section__content">
+				<div class="pair">
+						<button onclick="downloadBf()">&#127939; Download</button>
+						<label class="css-file" for="files">
+							&#127939; Upload
+
+							<input type="file" id="files" onchange="uploadBf()"/>
+						</label>
+					</div>
+			<form>
+				<label for="filename">
+					Filename:
+				</label>
+				<input type="text" placeholder="Filename" id="filename">
+				<label for="code">
+					Code:
+				</label>
+				<textarea placeholder="Code" rows="20" cols="1" id="code"></textarea>
+				<p>Mode:</p>
+				<label class="css-radio" for="rad">
+					ASCII
+					<input type="radio" name="var" value="1" id="rad" checked="checked">
+					<span class="check-mark"></span>
+				</label>
+				<label class="css-radio" for="rad-other">
+					Integer
+					<input type="radio" name="var" value="2" id="rad-other">
+					<span class="check-mark"></span>
+				</label>
+				<label for="output">
+					Output:
+				</label>
+				<textarea rows="4" cols="1" id="output"></textarea>
+			</form>
+			<div class="pair">
+				<button onclick="otp(1)">&#127939; Run</button>
+				<button onclick="copy()">&#128203; Copy Output </button>
+			</div>
+
+		</div>
+	</div>
+
+
+
+	<script src="scripts/brainf.js"></script>
+
+	<script src="https://fredhappyface.github.io/scripts/script.js"></script>
+
+
+</body>
+
+</html>
