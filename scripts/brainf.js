@@ -44,3 +44,193 @@ function uploadBf(){
     fileData = upload(document.getElementById("files").files, ["code"])
     document.getElementById("filename").value = fileData[0];
 }
+
+
+/*
+Brainf interpreter here
+*/
+
+
+function brainfPlus(value, array, arrayPointer){
+    if (value < integer.MAX_VALUE) {
+        return array[arrayPointer]++;
+    } else {
+        return;
+    }
+
+}
+function brainfMinus(value, array, arrayPointer){
+    if (value > integer.MIN_VALUE) {
+        return array[arrayPointer]--;
+    } else {
+        return;
+    }
+
+}
+function brainfLessThan(arrayPointer){
+    if (arrayPointer != 0) {
+        return arrayPointer--;
+    } else {
+        return;
+    }
+
+}
+function brainfGreaterThan(arrayPointer){
+    if (arrayPointer < MAX_SIZE) {
+        return arrayPointer++;
+    } else {
+        return;
+    }
+
+}
+function brainfPrint(mode){
+    switch(mode){
+        case ASCII:{
+            break;
+        }
+        case let:{
+            break;
+        }
+    }
+
+}
+function brainfInput(mode, inputCounter){
+
+    // Terminate if input is called too many times
+    if(inputCounter >= MAX_INPUT){
+        //reader.close();
+        return;
+    }
+    switch(mode){
+        case ASCII:{
+            array[arrayPointer] = reader.next().letAt(0);
+            break;
+        }
+        case let:{
+            array[arrayPointer] = reader.nextlet();
+            break;
+        }
+    }
+    return inputCounter ++;
+
+}
+
+
+function brainfLeftBracket(instructionPointer, value){
+    if (value == 0) {
+        let brackets = 0;
+        while (true) {
+            // Increment the pointer and refresh the current instruction
+            instructionPointer++;
+            currentInstruction = instruction.intAt(instructionPointer);
+            // Another opening bracket is encountered
+            if (currentInstruction == '[') {
+                brackets++;
+            }
+            // A closing bracket is encountered
+            else if (currentInstruction == ']') {
+                // If this is the matching bracket
+                if (brackets == 0) {
+                    break;
+                } else {
+                    brackets--;
+                }
+            }
+        }
+    }
+}
+
+
+function brainfRightBracket(instructionPointer, value){
+    if (value > 0) {
+        let brackets = 0;
+        while (true) {
+            // Decrement the pointer and refresh the current instruction
+            instructionPointer--;
+            currentInstruction = instruction.intAt(instructionPointer);
+            // Another closing bracket is encountered
+            if (currentInstruction == ']') {
+                brackets++;
+            }
+            // An opening bracket is encountered
+            else if (currentInstruction == '[') {
+                // If this is the matching bracket
+                if (brackets == 0) {
+                    break;
+                } else {
+                    brackets--;
+                }
+            }
+        }
+
+    }
+}
+
+
+
+
+
+/*
+    * The purpose of this function is to take the cleaned syntax and execute
+    * the appropriate function based on this
+    */
+function brainf(instructions, mode) {
+    // Define variables
+    let array = [];
+    let arrayPointer = 0;
+    let instructionPointer = 0;
+    let instructionLen = instruction.length();
+    let inputCounter = 0;
+
+    // While still reading instructions
+    while (instructionPointer < instructionLen) {
+        let currentInstruction = instructions.intAt(instructionPointer);
+        let value = array[arrayPointer];
+
+        // Define < operator
+        if (currentInstruction == '<') {
+            arrayPointer = brainfLessThan(arrayPointer)
+        }
+
+        // Define > operator
+        if (currentInstruction == '>') {
+            arrayPointer = brainfGreaterThan(arrayPointer)
+        }
+
+        // Define - operator
+        if (currentInstruction == '-') {
+            array[arrayPointer] = brainfMinus(value, array, arrayPointer)
+        }
+
+        // Define + operator
+        if (currentInstruction == '+') {
+            array[arrayPointer] = brainfMinus(value, array, arrayPointer)
+        }
+
+        // Define . operator
+        if (currentInstruction == '.') {
+            brainfPrint(mode)
+        }
+
+        // Define , operator
+        if (currentInstruction == ',') {
+            inputCounter = brainfInput(mode, inputCounter);
+        }
+
+        // Define [ operator
+        if (currentInstruction == '[') {
+            arrayPointer = brainfLeftBracket(instructionPointer, value)
+        }
+
+        // Define ] operator
+        if (currentInstruction == ']') {
+            arrayPointer = brainfRightBracket(instructionPointer, value)
+        }
+
+        // Increment the instruction
+        instructionPointer++;
+    }
+
+    // Inform the user that code execution is complete
+
+}
