@@ -55,7 +55,7 @@ function brainfPlus(value, array, arrayPointer){
     if (value < integer.MAX_VALUE) {
         return array[arrayPointer]++;
     } else {
-        return;
+        return array[arrayPointer];
     }
 
 }
@@ -63,15 +63,15 @@ function brainfMinus(value, array, arrayPointer){
     if (value > integer.MIN_VALUE) {
         return array[arrayPointer]--;
     } else {
-        return;
+        return array[arrayPointer];
     }
 
 }
 function brainfLessThan(arrayPointer){
-    if (arrayPointer != 0) {
+    if (arrayPointer !== 0) {
         return arrayPointer--;
     } else {
-        return;
+        return arrayPointer;
     }
 
 }
@@ -79,7 +79,7 @@ function brainfGreaterThan(arrayPointer){
     if (arrayPointer < MAX_SIZE) {
         return arrayPointer++;
     } else {
-        return;
+        return arrayPointer;
     }
 
 }
