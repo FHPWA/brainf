@@ -111,14 +111,14 @@
 				</label>
 				<textarea placeholder="Code" rows="20" cols="1" id="code"></textarea>
 				<p>Mode:</p>
-				<label class="css-radio" for="rad">
+				<label class="css-radio" for="mode-ascii">
 					ASCII
-					<input type="radio" name="var" value="1" id="rad" checked="checked">
+					<input type="radio" name="var" value="1" id="mode-ascii" checked="checked">
 					<span class="check-mark"></span>
 				</label>
-				<label class="css-radio" for="rad-other">
+				<label class="css-radio" for="mode-integer">
 					Integer
-					<input type="radio" name="var" value="2" id="rad-other">
+					<input type="radio" name="var" value="2" id="mode-integer">
 					<span class="check-mark"></span>
 				</label>
 				<label for="output">
@@ -127,7 +127,7 @@
 				<textarea rows="4" cols="1" id="output"></textarea>
 			</form>
 			<div class="pair">
-				<button onclick="otp(1)">&#127939; Run</button>
+				<button onclick="brainfBF()">&#127939; Run</button>
 				<button onclick="copy()">&#128203; Copy Output </button>
 			</div>
 

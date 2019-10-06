@@ -1,0 +1,26 @@
+{
+  "name": "pwa.brainf",
+  "version": "1.0.0",
+  "description": "Brainf interpreter as a pwa",
+  "main": "sw.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/FredHappyface/PWA.Brainf.git"
+  },
+  "keywords": [
+    "Brainf"
+  ],
+  "author": "FredHappyface",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/FredHappyface/PWA.Brainf/issues"
+  },
+  "homepage": "https://github.com/FredHappyface/PWA.Brainf#readme",
+  "devDependencies": {
+    "eslint": "^6.5.1",
+    "eslint-config-google": "^0.14.0"
+  }
+}

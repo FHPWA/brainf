@@ -18,8 +18,6 @@ description
 
 Find the site on https://FredHappyface.github.io/PWA.Brainf
 
-
-
 ## Language information
 PWA.Brainf is built with HTML5, CSS3 and JavaScript
 
@@ -65,7 +63,7 @@ This PWA is optimised for the following browsers and has been tested on them:
 
 |Google Chrome|Chromium Based Browsers|Safari|
 |:-:|:-:|:-:|
-| <img src="readme-assets/browsers/chrome.png" alt="Google Chrome" width="200"> | <img src="readme-assets/browsers/chromium.png" alt="Chromuim" width="200"> | <img src="readme-assets/browsers/safari.png" alt="Safari" width="200"> |
+| <img src="readme-assets/browsers/chrome.png" alt="Google Chrome" width="200"> | <img src="readme-assets/browsers/chromium.png" alt="Chromium" width="200"> | <img src="readme-assets/browsers/safari.png" alt="Safari" width="200"> |
 
 ### Partial Support
 This PWA should function on these browsers but some elements may look odd:
