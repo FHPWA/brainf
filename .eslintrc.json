@@ -18,6 +18,7 @@
         "indent": ["error", "tab"],
         "quotes": ["error", "double"],
         "camelcase":"off",
-        "no-tabs":"off"
+		"no-tabs":"off",
+		"eqeqeq":"error"
     }
 }

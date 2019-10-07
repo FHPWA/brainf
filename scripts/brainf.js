@@ -1,46 +1,6 @@
 MAX_SIZE = 1024;
 
 /**
- * Open the system file selector and upload a stream of chars with a filename
-for each file
- * @param {blob[]} files
- * @param {string[]} targets
- * @return {string[]} fileNames
- */
-function upload(files, targets) {
-	output = [];
-	for (let index = 0, file; file = files[index]; index++) {
-		const reader = new FileReader();
-		reader.readAsText(file, "UTF-8");
-		reader.onload = function(event) {
-			document.getElementById(targets[index]).value = event.target.result;
-		};
-		output.push(file.name);
-	}
-	return output;
-}
-
-
-/**
- * Download a stream of chars and set a filename
- * @param {string} filename
- * @param {string} chars
- * @return {void} none
- */
-function download(filename, chars) {
-	const blob = new Blob([chars], {type: "application/octet-stream"});
-	const blobURL = window.URL.createObjectURL(blob);
-	const link = document.createElement("a");
-	link.download = filename;
-	link.href = blobURL;
-	link.style.display = "none";
-	document.body.appendChild(link);
-	link.click();
-	document.body.removeAttributeNode(link);
-	return;
-}
-
-/**
  *
  */
 function downloadBf() { // eslint-disable-line no-unused-vars
@@ -176,11 +136,11 @@ function brainfLeftBracket(instructions, instructionPointer, value) {
 			instructionPointer++;
 			currentInstruction = instructions.intAt(instructionPointer);
 			// Opening bracket or A closing bracket is encountered
-			if (currentInstruction == "[") {
+			if (currentInstruction === "[") {
 				brackets++;
-			} else if (currentInstruction == "]") {
+			} else if (currentInstruction === "]") {
 				// If this is the matching bracket
-				if (brackets == 0) {
+				if (brackets === 0) {
 					break;
 				} else {
 					brackets--;
@@ -205,11 +165,11 @@ function brainfRightBracket(instructions, instructionPointer, value) {
 			instructionPointer--;
 			currentInstruction = instructions.intAt(instructionPointer);
 			// Closing bracket or an opening bracket is encountered
-			if (currentInstruction == "]") {
+			if (currentInstruction === "]") {
 				brackets++;
-			} else if (currentInstruction == "[") {
+			} else if (currentInstruction === "[") {
 				// If this is the matching bracket
-				if (brackets == 0) {
+				if (brackets === 0) {
 					break;
 				} else {
 					brackets--;
@@ -240,43 +200,43 @@ function brainf(instructions, mode) {
 		const value = array[arrayPointer];
 
 		// Define < operator
-		if (currentInstruction == "<") {
+		if (currentInstruction === "<") {
 			arrayPointer = brainfLessThan(arrayPointer);
 		}
 
 		// Define > operator
-		if (currentInstruction == ">") {
+		if (currentInstruction === ">") {
 			arrayPointer = brainfGreaterThan(arrayPointer);
 		}
 
 		// Define - operator
-		if (currentInstruction == "-") {
+		if (currentInstruction === "-") {
 			array[arrayPointer] = brainfMinus(value, array, arrayPointer);
 		}
 
 		// Define + operator
-		if (currentInstruction == "+") {
+		if (currentInstruction === "+") {
 			array[arrayPointer] = brainfPlus(value, array, arrayPointer);
 		}
 
 		// Define . operator
-		if (currentInstruction == ".") {
+		if (currentInstruction === ".") {
 			brainfPrint(mode, value);
 		}
 
 		// Define , operator
-		if (currentInstruction == ",") {
+		if (currentInstruction === ",") {
 			inputCounter = brainfInput(mode, inputCounter, array, arrayPointer);
 		}
 
 		// Define [ operator
-		if (currentInstruction == "[") {
+		if (currentInstruction === "[") {
 			instructionPointer = brainfLeftBracket(instructions,
 				instructionPointer, value);
 		}
 
 		// Define ] operator
-		if (currentInstruction == "]") {
+		if (currentInstruction === "]") {
 			instructionPointer = brainfRightBracket(instructions,
 				instructionPointer, value);
 		}
