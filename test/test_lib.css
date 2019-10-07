@@ -1,29 +1,30 @@
-td.true{
-    background-color: #00C851;
+td.true {
+	background-color: #00C851;
 }
 
-td.false{
-    background-color: #ff4444;
+td.false {
+	background-color: #FF4444;
 }
 
-td img{
-    float: left;
-}
-td p{
-    margin: 0;
-    margin-left: 35px;
+td img {
+	float: left;
 }
 
-table{
-    table-layout: fixed ;
-    width: 100%;
-    border-collapse: collapse;
+td p {
+	margin: 0;
+	margin-left: 35px;
 }
 
-td, th{
-    border: black 1px solid ;
+table {
+	table-layout: fixed;
+	width: 100%;
+	border-collapse: collapse;
 }
 
-th{
-    text-align: left;
+td, th {
+	border: black 1px solid;
+}
+
+th {
+	text-align: left;
 }

@@ -15,8 +15,9 @@
     },
     "rules": {
         "linebreak-style":"off",
-        "indent": ["error", 4],
+        "indent": ["error", "tab"],
         "quotes": ["error", "double"],
-        "camelcase":"off"
+        "camelcase":"off",
+        "no-tabs":"off"
     }
 }
