@@ -191,7 +191,7 @@ function brainf(instructions, mode) {
 	const array = new Array(MAX_SIZE).fill(0);
 	let arrayPointer = 0;
 	let instructionPointer = 0;
-	const instructionLen = instruction.length();
+	const instructionLen = instructions.length();
 	let inputCounter = 0;
 
 	// While still reading instructions
