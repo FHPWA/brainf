@@ -17,8 +17,9 @@
         "linebreak-style":"off",
         "indent": ["error", "tab"],
         "quotes": ["error", "double"],
-        "camelcase":"off",
 		"no-tabs":"off",
-		"eqeqeq":"error"
+		"eqeqeq":"error",
+		"complexity":["error", 12],
+		"max-lines": ["error", {"max": 200, "skipBlankLines": true, "skipComments": true}]
     }
 }

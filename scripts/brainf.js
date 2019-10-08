@@ -1,4 +1,8 @@
-MAX_SIZE = 1024;
+const MAX_SIZE = 1024;
+const MAX_INPUT = 32;
+const MAX_COMPLEXITY = 1024;
+let calls = 0;
+let inputCounter = 0;
 
 /**
  *
@@ -23,16 +27,17 @@ function uploadBf() { // eslint-disable-line no-unused-vars
 Brainf interpreter here
 */
 
+
 /**
  * Increment value function "+"
- * @param {int} value
  * @param {int[]} array
  * @param {int} arrayPointer
  * @return {int} updatedValue
  */
-function brainfPlus(value, array, arrayPointer) {
-	if (value < Number.MAX_SAFE_INTEGER) {
-		return array[arrayPointer]++;
+function brainfPlus(array, arrayPointer) {
+	calls++;
+	if (array[arrayPointer] < Number.MAX_SAFE_INTEGER) {
+		return ++array[arrayPointer];
 	} else {
 		return array[arrayPointer];
 	}
@@ -40,29 +45,16 @@ function brainfPlus(value, array, arrayPointer) {
 
 /**
  * Decrement value function "-"
- * @param {int} value
  * @param {int[]} array
  * @param {int} arrayPointer
  * @return {int} updatedValue
  */
-function brainfMinus(value, array, arrayPointer) {
-	if (value > Number.MIN_SAFE_INTEGER) {
-		return array[arrayPointer]--;
+function brainfMinus(array, arrayPointer) {
+	calls++;
+	if (array[arrayPointer] > Number.MIN_SAFE_INTEGER) {
+		return --array[arrayPointer];
 	} else {
 		return array[arrayPointer];
-	}
-}
-
-/**
- * Decrement array pointer function "<"
- * @param {int} arrayPointer
- * @return {int} updatedArrayPointer
- */
-function brainfLessThan(arrayPointer) {
-	if (arrayPointer > 0) {
-		return arrayPointer--;
-	} else {
-		return arrayPointer;
 	}
 }
 
@@ -73,7 +65,21 @@ function brainfLessThan(arrayPointer) {
  */
 function brainfGreaterThan(arrayPointer) {
 	if (arrayPointer < MAX_SIZE) {
-		return arrayPointer++;
+		return ++arrayPointer;
+	} else {
+		return arrayPointer;
+	}
+}
+
+/**
+ * Decrement array pointer function "<"
+ * @param {int} arrayPointer
+ * @return {int} updatedArrayPointer
+ */
+function brainfLessThan(arrayPointer) {
+	calls++;
+	if (arrayPointer > 0) {
+		return --arrayPointer;
 	} else {
 		return arrayPointer;
 	}
@@ -82,59 +88,79 @@ function brainfGreaterThan(arrayPointer) {
 /**
  * Print value as an integer or a string
  * @param {string} mode
- * @param {int} value
+ * @param {string} target
+ * @param {int[]} array
+ * @param {int} arrayPointer
+ * @return {void}
  */
-function brainfPrint(mode, value) {
+function brainfPrint(mode, target, array, arrayPointer) {
+	calls++;
 	switch (mode) {
 	case "ASCII": {
+		document.getElementById(target).value +=
+		String.fromCharCode(array[arrayPointer]);
 		break;
 	}
 	case "INT": {
+		document.getElementById(target).value += array[arrayPointer] + ", ";
 		break;
 	}
 	}
+	return;
 }
 
 /**
  * Get the user input as an integer or a string
  * @param {string} mode
- * @param {int} inputCounter
  * @param {int[]} array
  * @param {int} arrayPointer
  * @return {int} updatedInputCounter
  */
-function brainfInput(mode, inputCounter, array, arrayPointer) {
+function brainfInput(mode, array, arrayPointer) {
+	calls++;
+	inputCounter++;
 	// Terminate if input is called too many times
 	if (inputCounter >= MAX_INPUT) {
-		// reader.close();
-		return;
+		showToast("Input called too many times");
+		return -1;
+	}
+	const reader = window.prompt("Input ("+mode+"):", "");
+	if (reader.length < 1) {
+		showToast("Input required");
+		return -1;
 	}
 	switch (mode) {
 	case "ASCII": {
-		array[arrayPointer] = reader.next().intAt(0);
+		array[arrayPointer] = reader.charCodeAt(0);
 		break;
 	}
 	case "INT": {
-		array[arrayPointer] = reader.nextInt();
+		array[arrayPointer] = parseInt(reader, 10);
 		break;
 	}
 	}
-	return inputCounter++;
+	return 0;
 }
 
 /**
+ * if the byte at the data pointer is zero, then instead of moving the
+ * instruction pointer forward to the next command, jump it forward to
+ * the command after the matching ] command.
  * @param {int} instructions
  * @param {int} instructionPointer
- * @param {int} value
+ * @param {int[]} array
+ * @param {int} arrayPointer
  * @return {int} updatedInstructionPointer
  */
-function brainfLeftBracket(instructions, instructionPointer, value) {
-	if (value === 0) {
+function brainfLeftBracket(instructions, instructionPointer, array,
+	arrayPointer) {
+	calls++;
+	if (array[arrayPointer] === 0) {
 		let brackets = 0;
-		while (true) {
+		while (instructionPointer < instructions.length) {
 			// Increment the pointer and refresh the current instruction
 			instructionPointer++;
-			currentInstruction = instructions.intAt(instructionPointer);
+			currentInstruction = instructions.charAt(instructionPointer);
 			// Opening bracket or A closing bracket is encountered
 			if (currentInstruction === "[") {
 				brackets++;
@@ -152,18 +178,24 @@ function brainfLeftBracket(instructions, instructionPointer, value) {
 }
 
 /**
+ * if the byte at the data pointer is nonzero, then instead of moving the
+ * instruction pointer forward to the next command, jump it back to the
+ * command after the matching [ command.
  * @param {int} instructions
  * @param {int} instructionPointer
- * @param {int} value
+ * @param {int[]} array
+ * @param {int} arrayPointer
  * @return {int} updatedInstructionPointer
  */
-function brainfRightBracket(instructions, instructionPointer, value) {
-	if (value > 0) {
+function brainfRightBracket(instructions, instructionPointer, array,
+	arrayPointer) {
+	calls++;
+	if (array[arrayPointer] !== 0) {
 		let brackets = 0;
-		while (true) {
+		while (instructionPointer < 0) {
 			// Decrement the pointer and refresh the current instruction
 			instructionPointer--;
-			currentInstruction = instructions.intAt(instructionPointer);
+			currentInstruction = instructions.charAt(instructionPointer);
 			// Closing bracket or an opening bracket is encountered
 			if (currentInstruction === "]") {
 				brackets++;
@@ -185,19 +217,21 @@ function brainfRightBracket(instructions, instructionPointer, value) {
  * Run the brainf program
  * @param {string} instructions
  * @param {string} mode
+ * @param {string} target
  */
-function brainf(instructions, mode) {
+function brainf(instructions, mode, target) {
+	document.getElementById(target).value = "";
+	calls = 0;
+	inputCounter = 0;
 	// Define variables
 	const array = new Array(MAX_SIZE).fill(0);
 	let arrayPointer = 0;
 	let instructionPointer = 0;
-	const instructionLen = instructions.length();
-	let inputCounter = 0;
+	const instructionLen = instructions.length;
 
 	// While still reading instructions
 	while (instructionPointer < instructionLen) {
-		const currentInstruction = instructions.intAt(instructionPointer);
-		const value = array[arrayPointer];
+		const currentInstruction = instructions.charAt(instructionPointer);
 
 		// Define < operator
 		if (currentInstruction === "<") {
@@ -211,47 +245,56 @@ function brainf(instructions, mode) {
 
 		// Define - operator
 		if (currentInstruction === "-") {
-			array[arrayPointer] = brainfMinus(value, array, arrayPointer);
+			array[arrayPointer] = brainfMinus(array, arrayPointer);
 		}
 
 		// Define + operator
 		if (currentInstruction === "+") {
-			array[arrayPointer] = brainfPlus(value, array, arrayPointer);
+			array[arrayPointer] = brainfPlus(array, arrayPointer);
 		}
 
 		// Define . operator
 		if (currentInstruction === ".") {
-			brainfPrint(mode, value);
+			brainfPrint(mode, target, array, arrayPointer);
 		}
 
 		// Define , operator
 		if (currentInstruction === ",") {
-			inputCounter = brainfInput(mode, inputCounter, array, arrayPointer);
+			const exitCode = brainfInput(mode, array, arrayPointer);
+			if (exitCode < 0) {
+				return;
+			}
 		}
 
 		// Define [ operator
 		if (currentInstruction === "[") {
 			instructionPointer = brainfLeftBracket(instructions,
-				instructionPointer, value);
+				instructionPointer, array, arrayPointer);
 		}
 
 		// Define ] operator
 		if (currentInstruction === "]") {
 			instructionPointer = brainfRightBracket(instructions,
-				instructionPointer, value);
+				instructionPointer, array, arrayPointer);
 		}
 
 		// Increment the instruction
 		instructionPointer++;
-	}
 
+		if (calls > MAX_COMPLEXITY) {
+			showToast("Too many calls");
+			return;
+		}
+	}
 	// Inform the user that code execution is complete
+	showToast("Code execution complete");
 }
 
 /**
- *
+ * Call brainf with page specific params
  */
 function brainfBF() { // eslint-disable-line no-unused-vars
 	brainf(document.getElementById("code").value,
-		(document.getElementById("mode-ascii").checked ? "ASCII" : "INT"));
+		(document.getElementById("mode-ascii").checked ? "ASCII" : "INT"),
+		"output");
 }
