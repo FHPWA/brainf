@@ -47,91 +47,101 @@ function test_brainfLessThan_0() {
  * @return {boolean} testResult
  */
 function test_brainfGreaterThan() {
-	return assertError();
+	return assertEquals(1, brainfGreaterThan(0));
 }
 
 /**
  * @return {boolean} testResult
  */
 function test_brainfGreaterThan_MAX() {
-	return assertError();
+	return assertEquals(MAX_SIZE, brainfGreaterThan(MAX_SIZE));
 }
 
 /**
  * @return {boolean} testResult
  */
 function test_brainfPrint() {
-	return assertError();
+	return assertTargetEquals("A", function() {
+		brainfPrint("ASCII", "test_brainf_output", [65], 0);
+	}, "test_brainf_output");
 }
 
 /**
  * @return {boolean} testResult
  */
 function test_brainfInput() {
-	return assertError();
+	return fail("Cannot test this");
 }
 
 /**
  * @return {boolean} testResult
  */
 function test_brainfLeftBracket() {
-	return assertError();
+	return assertEquals(1, brainfLeftBracket("[]", 0, [0], 0));
 }
 
 /**
  * @return {boolean} testResult
  */
 function test_brainfLeftBracket_2deep() {
-	return assertError();
+	return assertEquals(3, brainfLeftBracket("[[]]", 0, [0], 0));
 }
 
 /**
  * @return {boolean} testResult
  */
 function test_brainfLeftBracket_notMatching() {
-	return assertError();
+	return assertEquals(1, brainfLeftBracket("[", 0, [0], 0));
 }
 
 /**
  * @return {boolean} testResult
  */
 function test_brainfRightBracket() {
-	return assertError();
+	return assertEquals(0, brainfRightBracket("[]", 1, [1], 0));
 }
 
 /**
  * @return {boolean} testResult
  */
 function test_brainfRightBracket_2deep() {
-	return assertError();
+	return assertEquals(0, brainfRightBracket("[[]]", 3, [1], 0));
 }
 
 /**
  * @return {boolean} testResult
  */
 function test_brainfRightBracket_notMatching() {
-	return assertError();
+	return assertEquals(-1, brainfRightBracket("]", 0, [1], 0));
 }
 
 /**
  * @return {boolean} testResult
  */
-function test_brainf_add() {
-	return assertError();
+function test_brainf_subtract() {
+	return assertTargetEquals("2, ", function() {
+		brainf("+++++>+++[-<->]<.", "INT", "test_brainf_output");
+	}, "test_brainf_output");
 }
 
 /**
  * @return {boolean} testResult
  */
 function test_brainf_mult() {
-	return assertError();
+	return assertTargetEquals("15, ", function() {
+		brainf("+++++[->+++<]>.", "INT", "test_brainf_output");
+	}, "test_brainf_output");
 }
 
 /**
  * @return {boolean} testResult
  */
 function test_brainf_helloWorld() {
-	return assertError();
+	return assertTargetEquals("Hello World!\n", function() {
+		// eslint-disable-next-line max-len
+		brainf("++++++++[>++++[>++>+++>+++>+<<<<-]>+>+>->>+[<]<-]>>.>---.+++++++..+++.>>.<-.<.+++.------.--------.>>+.>++.",
+			"ASCII", "test_brainf_output");
+	}, "test_brainf_output");
 }
 
 
@@ -142,6 +152,6 @@ const tests = [test_brainfGreaterThan, test_brainfGreaterThan_MAX,
 	test_brainfLessThan_0, test_brainfMinus, test_brainfMinus_MININT,
 	test_brainfPlus, test_brainfPlus_MAXINT, test_brainfPrint,
 	test_brainfRightBracket, test_brainfRightBracket_2deep,
-	test_brainfRightBracket_notMatching, test_brainf_add,
+	test_brainfRightBracket_notMatching, test_brainf_subtract,
 	test_brainf_helloWorld, test_brainf_mult];
 iterateTests(tests, testTable);

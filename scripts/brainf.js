@@ -192,7 +192,7 @@ function brainfRightBracket(instructions, instructionPointer, array,
 	calls++;
 	if (array[arrayPointer] !== 0) {
 		let brackets = 0;
-		while (instructionPointer < 0) {
+		while (instructionPointer >= 0) {
 			// Decrement the pointer and refresh the current instruction
 			instructionPointer--;
 			currentInstruction = instructions.charAt(instructionPointer);

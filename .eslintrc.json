@@ -20,6 +20,6 @@
 		"no-tabs":"off",
 		"eqeqeq":"error",
 		"complexity":["error", 12],
-		"max-lines": ["error", {"max": 200, "skipBlankLines": true, "skipComments": true}]
+		"max-lines": ["error", {"max": 180, "skipBlankLines": true, "skipComments": true}]
     }
 }
