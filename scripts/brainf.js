@@ -30,38 +30,44 @@ Brainf interpreter here
 
 /**
  * Increment value function "+"
- * @param {int[]} array
- * @param {int} arrayPointer
- * @return {int} updatedValue
+ * @param {number[]} array
+ * @param {number} arrayPointer
+ * @return {number} updatedValue
  */
 function brainfPlus(array, arrayPointer) {
 	calls++;
+	// eslint-disable-next-line security/detect-object-injection
 	if (array[arrayPointer] < Number.MAX_SAFE_INTEGER) {
+		// eslint-disable-next-line security/detect-object-injection
 		return ++array[arrayPointer];
 	} else {
+		// eslint-disable-next-line security/detect-object-injection
 		return array[arrayPointer];
 	}
 }
 
 /**
  * Decrement value function "-"
- * @param {int[]} array
- * @param {int} arrayPointer
- * @return {int} updatedValue
+ * @param {number[]} array
+ * @param {number} arrayPointer
+ * @return {number} updatedValue
  */
 function brainfMinus(array, arrayPointer) {
 	calls++;
+	// eslint-disable-next-line security/detect-object-injection
 	if (array[arrayPointer] > Number.MIN_SAFE_INTEGER) {
+		// eslint-disable-next-line security/detect-object-injection
 		return --array[arrayPointer];
 	} else {
+		// eslint-disable-next-line security/detect-object-injection
 		return array[arrayPointer];
 	}
 }
 
 /**
  * Increment array pointer function ">"
- * @param {int} arrayPointer
- * @return {int} updatedArrayPointer
+ * @param {number} arrayPointer
+ * @return {number} updatedArrayPointer
  */
 function brainfGreaterThan(arrayPointer) {
 	if (arrayPointer < MAX_SIZE) {
@@ -73,8 +79,8 @@ function brainfGreaterThan(arrayPointer) {
 
 /**
  * Decrement array pointer function "<"
- * @param {int} arrayPointer
- * @return {int} updatedArrayPointer
+ * @param {number} arrayPointer
+ * @return {number} updatedArrayPointer
  */
 function brainfLessThan(arrayPointer) {
 	calls++;
@@ -89,8 +95,8 @@ function brainfLessThan(arrayPointer) {
  * Print value as an integer or a string
  * @param {string} mode
  * @param {string} target
- * @param {int[]} array
- * @param {int} arrayPointer
+ * @param {number[]} array
+ * @param {number} arrayPointer
  * @return {void}
  */
 function brainfPrint(mode, target, array, arrayPointer) {
@@ -98,10 +104,12 @@ function brainfPrint(mode, target, array, arrayPointer) {
 	switch (mode) {
 	case "ASCII": {
 		document.getElementById(target).value +=
-		String.fromCharCode(array[arrayPointer]);
+			// eslint-disable-next-line security/detect-object-injection
+			String.fromCharCode(array[arrayPointer]);
 		break;
 	}
 	case "INT": {
+		// eslint-disable-next-line security/detect-object-injection
 		document.getElementById(target).value += array[arrayPointer] + ", ";
 		break;
 	}
@@ -112,9 +120,9 @@ function brainfPrint(mode, target, array, arrayPointer) {
 /**
  * Get the user input as an integer or a string
  * @param {string} mode
- * @param {int[]} array
- * @param {int} arrayPointer
- * @return {int} updatedInputCounter
+ * @param {number[]} array
+ * @param {number} arrayPointer
+ * @return {number} updatedInputCounter
  */
 function brainfInput(mode, array, arrayPointer) {
 	calls++;
@@ -124,17 +132,19 @@ function brainfInput(mode, array, arrayPointer) {
 		showToast("Input called too many times");
 		return -1;
 	}
-	const reader = window.prompt("Input ("+mode+"):", "");
+	const reader = window.prompt("Input (" + mode + "):", "");
 	if (reader.length < 1) {
 		showToast("Input required");
 		return -1;
 	}
 	switch (mode) {
 	case "ASCII": {
+		// eslint-disable-next-line security/detect-object-injection
 		array[arrayPointer] = reader.charCodeAt(0);
 		break;
 	}
 	case "INT": {
+		// eslint-disable-next-line security/detect-object-injection
 		array[arrayPointer] = parseInt(reader, 10);
 		break;
 	}
@@ -146,21 +156,22 @@ function brainfInput(mode, array, arrayPointer) {
  * if the byte at the data pointer is zero, then instead of moving the
  * instruction pointer forward to the next command, jump it forward to
  * the command after the matching ] command.
- * @param {int} instructions
- * @param {int} instructionPointer
- * @param {int[]} array
- * @param {int} arrayPointer
- * @return {int} updatedInstructionPointer
+ * @param {string} instructions
+ * @param {number} instructionPointer
+ * @param {number[]} array
+ * @param {number} arrayPointer
+ * @return {number} updatedInstructionPointer
  */
 function brainfLeftBracket(instructions, instructionPointer, array,
 	arrayPointer) {
 	calls++;
+	// eslint-disable-next-line security/detect-object-injection
 	if (array[arrayPointer] === 0) {
 		let brackets = 0;
 		while (instructionPointer < instructions.length) {
 			// Increment the pointer and refresh the current instruction
 			instructionPointer++;
-			currentInstruction = instructions.charAt(instructionPointer);
+			const currentInstruction = instructions.charAt(instructionPointer);
 			// Opening bracket or A closing bracket is encountered
 			if (currentInstruction === "[") {
 				brackets++;
@@ -181,21 +192,22 @@ function brainfLeftBracket(instructions, instructionPointer, array,
  * if the byte at the data pointer is nonzero, then instead of moving the
  * instruction pointer forward to the next command, jump it back to the
  * command after the matching [ command.
- * @param {int} instructions
- * @param {int} instructionPointer
- * @param {int[]} array
- * @param {int} arrayPointer
- * @return {int} updatedInstructionPointer
+ * @param {string} instructions
+ * @param {number} instructionPointer
+ * @param {number[]} array
+ * @param {number} arrayPointer
+ * @return {number} updatedInstructionPointer
  */
 function brainfRightBracket(instructions, instructionPointer, array,
 	arrayPointer) {
 	calls++;
+	// eslint-disable-next-line security/detect-object-injection
 	if (array[arrayPointer] !== 0) {
 		let brackets = 0;
 		while (instructionPointer >= 0) {
 			// Decrement the pointer and refresh the current instruction
 			instructionPointer--;
-			currentInstruction = instructions.charAt(instructionPointer);
+			const currentInstruction = instructions.charAt(instructionPointer);
 			// Closing bracket or an opening bracket is encountered
 			if (currentInstruction === "]") {
 				brackets++;
@@ -245,11 +257,13 @@ function brainf(instructions, mode, target) {
 
 		// Define - operator
 		if (currentInstruction === "-") {
+			// eslint-disable-next-line security/detect-object-injection
 			array[arrayPointer] = brainfMinus(array, arrayPointer);
 		}
 
 		// Define + operator
 		if (currentInstruction === "+") {
+			// eslint-disable-next-line security/detect-object-injection
 			array[arrayPointer] = brainfPlus(array, arrayPointer);
 		}
 
