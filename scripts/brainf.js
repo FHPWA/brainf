@@ -36,12 +36,10 @@ Brainf interpreter here
  */
 function brainfPlus(array, arrayPointer) {
 	calls++;
-	// eslint-disable-next-line security/detect-object-injection
+
 	if (array[arrayPointer] < Number.MAX_SAFE_INTEGER) {
-		// eslint-disable-next-line security/detect-object-injection
 		return ++array[arrayPointer];
 	} else {
-		// eslint-disable-next-line security/detect-object-injection
 		return array[arrayPointer];
 	}
 }
@@ -54,12 +52,10 @@ function brainfPlus(array, arrayPointer) {
  */
 function brainfMinus(array, arrayPointer) {
 	calls++;
-	// eslint-disable-next-line security/detect-object-injection
+
 	if (array[arrayPointer] > Number.MIN_SAFE_INTEGER) {
-		// eslint-disable-next-line security/detect-object-injection
 		return --array[arrayPointer];
 	} else {
-		// eslint-disable-next-line security/detect-object-injection
 		return array[arrayPointer];
 	}
 }
@@ -104,12 +100,10 @@ function brainfPrint(mode, target, array, arrayPointer) {
 	switch (mode) {
 	case "ASCII": {
 		document.getElementById(target).value +=
-			// eslint-disable-next-line security/detect-object-injection
 			String.fromCharCode(array[arrayPointer]);
 		break;
 	}
 	case "INT": {
-		// eslint-disable-next-line security/detect-object-injection
 		document.getElementById(target).value += array[arrayPointer] + ", ";
 		break;
 	}
@@ -139,12 +133,10 @@ function brainfInput(mode, array, arrayPointer) {
 	}
 	switch (mode) {
 	case "ASCII": {
-		// eslint-disable-next-line security/detect-object-injection
 		array[arrayPointer] = reader.charCodeAt(0);
 		break;
 	}
 	case "INT": {
-		// eslint-disable-next-line security/detect-object-injection
 		array[arrayPointer] = parseInt(reader, 10);
 		break;
 	}
@@ -165,7 +157,7 @@ function brainfInput(mode, array, arrayPointer) {
 function brainfLeftBracket(instructions, instructionPointer, array,
 	arrayPointer) {
 	calls++;
-	// eslint-disable-next-line security/detect-object-injection
+
 	if (array[arrayPointer] === 0) {
 		let brackets = 0;
 		while (instructionPointer < instructions.length) {
@@ -201,7 +193,7 @@ function brainfLeftBracket(instructions, instructionPointer, array,
 function brainfRightBracket(instructions, instructionPointer, array,
 	arrayPointer) {
 	calls++;
-	// eslint-disable-next-line security/detect-object-injection
+
 	if (array[arrayPointer] !== 0) {
 		let brackets = 0;
 		while (instructionPointer >= 0) {
@@ -257,13 +249,11 @@ function brainf(instructions, mode, target) {
 
 		// Define - operator
 		if (currentInstruction === "-") {
-			// eslint-disable-next-line security/detect-object-injection
 			array[arrayPointer] = brainfMinus(array, arrayPointer);
 		}
 
 		// Define + operator
 		if (currentInstruction === "+") {
-			// eslint-disable-next-line security/detect-object-injection
 			array[arrayPointer] = brainfPlus(array, arrayPointer);
 		}
 

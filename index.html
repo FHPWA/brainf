@@ -6,7 +6,7 @@
 	<link rel="stylesheet" type="text/css" href="https://fredhappyface.github.io/css/main.css">
 	<script>
 		if ("serviceWorker" in navigator) {
-				navigator.serviceWorker.register("/PWA.Brainf/sw.js", {scope: "/PWA.Brainf/"});
+			navigator.serviceWorker.register("/PWA.Brainf/sw.js", { scope: "/PWA.Brainf/" });
 		}
 		var data;
 		/* read data from local storage */
@@ -84,22 +84,24 @@
 	<div class="buffer--app-bar">
 	</div>
 
-	<div id="js-toast" >
-		<div><p id="js-toast__text" class="c-toast"></p></div>
+	<div id="js-toast">
+		<div>
+			<p id="js-toast__text" class="c-toast"></p>
+		</div>
 	</div>
 
 
 
 	<div class="section c-primary">
 		<div class="section__content">
-				<div class="pair">
-						<button onclick="downloadBf()">&#127939; Download</button>
-						<label class="css-file" for="files">
-							&#127939; Upload
+			<div class="pair">
+				<button onclick="downloadBf()">&#127939; Download</button>
+				<label class="css-file" for="files">
+					&#127939; Upload
 
-							<input type="file" id="files" onchange="uploadBf()"/>
-						</label>
-					</div>
+					<input type="file" id="files" onchange="uploadBf()" />
+				</label>
+			</div>
 			<form>
 				<label for="filename">
 					Filename:
@@ -133,12 +135,9 @@
 		</div>
 	</div>
 
-
-
 	<script src="scripts/brainf.js"></script>
 
 	<script src="https://fredhappyface.github.io/scripts/script.js"></script>
-
 
 </body>
 

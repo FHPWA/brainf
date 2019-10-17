@@ -17,19 +17,17 @@ function iterateTests(tests, testTable) { // eslint-disable-line no-unused-vars
 	const headings = ["Test", "Result"];
 	for (let index = 0; index < 2; index++) {
 		const head = document.createElement("th");
-		// eslint-disable-next-line security/detect-object-injection
 		head.innerText = headings[index];
 		headRow.appendChild(head);
 	}
 	for (let index = 0; index < tests.length; index++) {
 		const newRow = testTable.insertRow();
-		// eslint-disable-next-line security/detect-object-injection
 		newRow.insertCell().innerText = tests[index].name;
-		// eslint-disable-next-line security/detect-object-injection
 		const testResult = tests[index]();
 		const tableTestResult = newRow.insertCell();
 		const img = document.createElement("img");
-		img.src = testResult[0] + ".svg";
+		// Used ternary operator to defend against malicious injection
+		img.src = (testResult[0] ? "true" : "false") + ".svg";
 		tableTestResult.appendChild(img);
 		const resultText = document.createElement("p");
 		resultText.innerText = testResult[1];

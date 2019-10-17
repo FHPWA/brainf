@@ -24,6 +24,8 @@
     "eslint-config-google": "^0.14.0"
   },
   "dependencies": {
+    "eslint-plugin-no-unsanitized": "^3.0.2",
+    "eslint-plugin-scanjs-rules": "^0.2.1",
     "eslint-plugin-security": "^1.4.0"
   }
 }

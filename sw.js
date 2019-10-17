@@ -1,6 +1,7 @@
 ﻿const cacheVersion = "fredhappyface";
 const urlsToPrefetch = [
 	"/PWA.Brainf/",
+	"/PWA.Brainf/scripts/brainf.js",
 
 	"/css/theme/auto.css",
 	"/css/theme/black.css",
