@@ -1,4 +1,4 @@
-﻿const cacheVersion = "Brainf-2019.11.1";
+﻿const cacheVersion = "Brainf-2019.11.2";
 const urlsToPrefetch = [
 	"/PWA.Brainf/",
 	"/PWA.Brainf/index.html",
@@ -15,6 +15,7 @@ const urlsToPrefetch = [
 	"/scripts/script.js",
 	"/scripts/settings.js",
 	"/fonts/FiraSansNF.woff2",
+	"/fonts/FiraCode.woff2"
 ];
 
 self.addEventListener("install", function (event) {
