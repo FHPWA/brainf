@@ -12,7 +12,7 @@
 
 # PWA.Brainf
 
-<img src="readme-assets/icons/proj-icon.png" alt="Project Icon" width="100">
+<img src="readme-assets/icons/name.png" alt="Project Icon" width="750">
 
 An online version of an Android application that I released in
 the hope that it will be more accessible. Run programs written
