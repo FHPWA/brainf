@@ -1,3 +1,5 @@
+build.js
+
 # VSCode
 .vscode/*
 !.vscode/settings.json

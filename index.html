@@ -1,25 +1,32 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en-GB">
 
 <head>
+	<link rel="preload" href="https://fredhappyface.github.io/fonts/FiraSansNF.woff2" as="font" type="font/woff2">
 	<meta charset="utf-8">
 	<link rel="stylesheet" type="text/css" href="https://fredhappyface.github.io/css/main.css">
 	<script>
 		if ("serviceWorker" in navigator) {
-			navigator.serviceWorker.register("/PWA.Home/sw.js", { scope: "/PWA.Home/" });
+			navigator.serviceWorker.register("/PWA.Brainf/sw.js", { scope: "/PWA.Brainf/" });
 		}
-		/* read data from local storage */
-		var data = JSON.parse(localStorage.getItem('com.fredhappyface'));
-		// set the theme to the appropriate css
-		document.head.innerHTML += '<link rel="stylesheet" href="https://fredhappyface.github.io/css/theme/' + (data && data.theme ? data.theme : "auto") + '.css"  id="theme">';
-		// set the text size
-		var declaration = document.styleSheets[0].cssRules[0].style;
-		declaration.setProperty("--text-mod", (data && data.text ? data.text : "1"))
+		/* read data from local storage and set css vars*/
+		let settingData = JSON.parse(localStorage.getItem('com.fredhappyface'));
+		const rootStyles = document.styleSheets[0].cssRules[0].style;
+		const darkStyles = document.styleSheets[0].cssRules[1].cssRules[0].style;
+		rootStyles.setProperty("--text-mod", (settingData.textSize.size ? settingData.textSize.size : "1"))
+		if (settingData.theme.name !== "auto"){
+			rootStyles.setProperty("--var-c-primary", (settingData.theme.cPrimary ? settingData.theme.cPrimary : "#FAFAFA"))
+			rootStyles.setProperty("--var-c-secondary", (settingData.theme.cSecondary ? settingData.theme.cSecondary : "#EAEAEB"))
+			rootStyles.setProperty("--var-c-text", (settingData.theme.cText ? settingData.theme.cText : "#383A42"))
+			darkStyles.setProperty("--var-c-primary", (settingData.theme.cPrimary ? settingData.theme.cPrimary : "#181A1F"))
+			darkStyles.setProperty("--var-c-secondary", (settingData.theme.cSecondary ? settingData.theme.cSecondary : "#282C34"))
+			darkStyles.setProperty("--var-c-text", (settingData.theme.cText ? settingData.theme.cText : "#ABB2BF"))
+			rootStyles.setProperty("--var-c-black", (settingData.theme.cBlack ? settingData.theme.cBlack : "0"))
+		}
 	</script>
 
-	<meta name="Description" content="Author: FredHappyface; Category: Cryptography,
-	Proof of concept; Cost: Free">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="Description" content="Author: FredHappyface; Cost: Free">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
 	<!--Android app icon-->
 	<link rel="manifest" href="/PWA.Brainf/manifest.json">
@@ -45,13 +52,12 @@
 
 <body>
 
-
-	<div class="section--app-bar c-app-bar--brainf">
+	<div class="section--nav-bar c-app-bar--brainf">
 
 		<div class="app-bar">
 			<div class="section__content">
 				<div class="left">
-					<h1>Brainf Interpreter</h1>
+					<h1>Brainf</h1>
 				</div>
 				<div class="pair right">
 					<a href="https://fredhappyface.github.io/PWA.Home/info.html">
@@ -64,59 +70,56 @@
 			</div>
 		</div>
 
-
 	</div>
 
 	<div class="buffer--app-bar">
 	</div>
 
-	<div id="js-toast">
-		<div>
-			<p id="js-toast__text" class="c-toast"></p>
-		</div>
+	<div id="js-toast" >
+		<div><p id="js-toast__text" class="c-toast"></p></div>
 	</div>
 
-
-
-	<div class="section c-primary">
+	<div class="section c-secondary">
 		<div class="section__content">
-			<div class="pair">
-				<button onclick="downloadBf()">&#xf47c; Download</button>
-				<label class="css-file" for="files">
-					&#xf47b; Upload
+			
+	<div class="pair">
+		<button onclick="downloadBf()">&#xF47C; Download</button>
+		<label class="css-file" for="files">
+			&#xF47B; Upload
 
-					<input type="file" id="files" onchange="uploadBf()" />
-				</label>
-			</div>
-			<form>
-				<label for="filename">
-					Filename:
-				</label>
-				<input type="text" placeholder="Filename" id="filename">
-				<label for="code">
-					Code:
-				</label>
-				<textarea class="code" placeholder="Code" rows="20" cols="1" id="code"></textarea>
-				<p>Mode:</p>
-				<label class="css-radio" for="mode-ascii">
-					ASCII
-					<input type="radio" name="var" value="1" id="mode-ascii" checked="checked">
-					<span class="check-mark"></span>
-				</label>
-				<label class="css-radio" for="mode-integer">
-					Integer
-					<input type="radio" name="var" value="2" id="mode-integer">
-					<span class="check-mark"></span>
-				</label>
-				<label for="output">
-					Output:
-				</label>
-				<textarea class="code" rows="4" cols="1" id="output"></textarea>
-			</form>
-			<div class="pair">
-				<button onclick="brainfBF()">&#xf489; Run</button>
-				<button onclick="copy()">&#xf429; Copy Output </button>
-			</div>
+			<input type="file" id="files" onchange="uploadBf()">
+		</label>
+	</div>
+	<form>
+		<label for="filename">
+			Filename:
+		</label>
+		<input type="text" placeholder="Filename" id="filename">
+		<label for="code">
+			Code:
+		</label>
+		<textarea class="code" placeholder="Code" rows="20" cols="1" id="code"></textarea>
+		<p>Mode:</p>
+		<label class="css-radio" for="mode-ascii">
+			ASCII
+			<input type="radio" name="var" value="1" id="mode-ascii" checked="checked">
+			<span class="check-mark"></span>
+		</label>
+		<label class="css-radio" for="mode-integer">
+			Integer
+			<input type="radio" name="var" value="2" id="mode-integer">
+			<span class="check-mark"></span>
+		</label>
+		<label for="output">
+			Output:
+		</label>
+		<textarea class="code" rows="4" cols="1" id="output"></textarea>
+	</form>
+	<div class="pair">
+		<button onclick="brainfBF()">&#xF489; Run</button>
+		<button onclick="copy()">&#xF429; Copy Output </button>
+	</div>
+
 
 		</div>
 	</div>

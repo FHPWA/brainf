@@ -1,21 +1,5 @@
-﻿const CACHE = "Brainf";
-const precacheFiles = [
-	"/PWA.Brainf/",
-	"/PWA.Brainf/index.html",
-	"/PWA.Brainf/scripts/brainf.js",
-	"/PWA.Brainf/images/appicons/squircle-256.png",
-
-	"/css/theme/auto.css",
-	"/css/theme/black.css",
-	"/css/theme/dark.css",
-	"/css/theme/light.css",
-	"/css/main.css",
-	"/css/settings.css",
-	"/scripts/navbar.js",
-	"/scripts/script.js",
-	"/scripts/settings.js",
-	"/fonts/FiraSansNF.woff2",
-	"/fonts/FiraCode.woff2"
+const CACHE = "Brainf";
+const precacheFiles = ["/PWA.Brainf/","/PWA.Brainf/index.html","/PWA.Brainf/scripts/brainf.js","/PWA.Brainf/images/appicons/squircle-256.png","/css/main.css","/scripts/navbar.js","/scripts/script.js","/fonts/FiraSansNF.woff2","/fonts/FiraCode.woff2",
 ];
 
 self.addEventListener("install", function (event) {

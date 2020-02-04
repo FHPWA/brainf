@@ -1,0 +1,41 @@
+{
+	"base": {
+		"projectFullName": "PWA.Brainf",
+		"projectShortName": "Brainf",
+		"stylesNamespace": "brainf",
+		"projectColour": "#e23834",
+		"isNavigation": false,
+		"precacheFiles": [
+			{
+				"fileName": "PWA.Brainf/"
+			},
+			{
+				"fileName": "PWA.Brainf/index.html"
+			},
+			{
+				"fileName": "PWA.Brainf/scripts/brainf.js"
+			},
+			{
+				"fileName": "PWA.Brainf/images/appicons/squircle-256.png"
+			},
+			{
+				"fileName": "css/main.css"
+			},
+			{
+				"fileName": "scripts/navbar.js"
+			},
+			{
+				"fileName": "scripts/script.js"
+			},
+			{
+				"fileName": "fonts/FiraSansNF.woff2"
+			},
+			{
+				"fileName": "fonts/FiraCode.woff2"
+			}
+		]
+	},
+	"files": [
+		"index.sections.html"
+	]
+}
