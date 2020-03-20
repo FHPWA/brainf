@@ -6,11 +6,6 @@
 [![Commit activity](https://img.shields.io/github/commit-activity/m/FHPWA/Brainf.svg?style=for-the-badge)](../../commits/master)
 [![Last commit](https://img.shields.io/github/last-commit/FHPWA/Brainf.svg?style=for-the-badge)](../../commits/master)
 
-# Brainf
-
-<img src="readme-assets/icons/name.png" alt="Project Icon" width="750">
-
-
 <img src="readme-assets/icons/name.png" alt="Project Icon" width="750">
 
 An online version of an Android application that I released in
@@ -39,7 +34,7 @@ $ git clone https://github.com/[user-name]/[repository]
 
 More information can be found at https://help.github.com/en/articles/cloning-a-repository
 
-#### Using GitHub Desktop
+#### Using GitHub Deskto
 1. Press the Clone or download button in the top right
 2. Click open in desktop
 3. Choose the path for where you want and click Clone
