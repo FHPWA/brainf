@@ -1,22 +1,22 @@
 {
 	"base": {
-		"projectFullName": "PWA.Brainf",
+		"projectFullName": "brainf",
 		"projectShortName": "Brainf",
 		"stylesNamespace": "brainf",
 		"projectColour": "#e23834",
 		"isNavigation": false,
 		"precacheFiles": [
 			{
-				"fileName": "PWA.Brainf/"
+				"fileName": "brainf/"
 			},
 			{
-				"fileName": "PWA.Brainf/index.html"
+				"fileName": "brainf/index.html"
 			},
 			{
-				"fileName": "PWA.Brainf/scripts/brainf.js"
+				"fileName": "brainf/scripts/brainf.js"
 			},
 			{
-				"fileName": "PWA.Brainf/images/appicons/squircle-256.png"
+				"fileName": "brainf/images/appicons/squircle-256.png"
 			},
 			{
 				"fileName": "css/main.css"

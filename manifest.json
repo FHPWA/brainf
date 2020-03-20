@@ -2,23 +2,23 @@
 	"name": "Brainf",
 	"short_name": "Brainf",
 	"lang": "en-GB",
-	"start_url": "/PWA.Brainf/",
+	"start_url": "/brainf/",
 	"display": "standalone",
 	"background_color": "#000000",
 	"theme_color": "#e23834",
 	"icons": [
 		{
-			"src": "/PWA.Brainf/images/appicons/round-192.png",
+			"src": "/brainf/images/appicons/round-192.png",
 			"sizes": "192x192",
 			"type": "image/png"
 		},
 		{
-			"src": "/PWA.Brainf/images/appicons/round-512.png",
+			"src": "/brainf/images/appicons/round-512.png",
 			"sizes": "512x512",
 			"type": "image/png"
 		},
 		{
-			"src": "/PWA.Brainf/images/appicons/mask.png",
+			"src": "/brainf/images/appicons/mask.png",
 			"sizes": "512x512",
 			"type": "image/png",
 			"purpose": "maskable"

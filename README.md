@@ -1,16 +1,15 @@
-<p float="left">
-<img src="https://img.shields.io/github/languages/top/fredhappyface/PWA.Brainf.svg?style=flat-square" alt="Github top language">
-<img src="https://img.shields.io/codacy/grade/b078f2278a54442f988bf32a237db48a.svg?style=flat-square" alt="Codacy grade">
-<img src="https://img.shields.io/codacy/coverage/b078f2278a54442f988bf32a237db48a.svg?style=flat-square" alt="Codacy coverage">
-<img src="https://img.shields.io/github/repo-size/fredhappyface/PWA.Brainf.svg?style=flat-square" alt="Repository size">
-<img src="https://img.shields.io/github/issues/fredhappyface/PWA.Brainf.svg?style=flat-square" alt="Issues">
-<img src="https://img.shields.io/github/license/fredhappyface/PWA.Brainf.svg?style=flat-square" alt="License">
-<img src="https://img.shields.io/github/commit-activity/m/fredhappyface/PWA.Brainf.svg?style=flat-square" alt="Commit activity">
-<img src="https://img.shields.io/github/last-commit/fredhappyface/PWA.Brainf.svg?style=flat-square" alt="Last commit">
-</p>
+[![Github top language](https://img.shields.io/github/languages/top/FHPWA/Brainf.svg?style=for-the-badge)](../../)
+[![Codacy grade](https://img.shields.io/codacy/grade/[codacy-proj-id].svg?style=for-the-badge)](https://www.codacy.com/manual/FHPWA/Brainf)
+[![Repository size](https://img.shields.io/github/repo-size/FHPWA/Brainf.svg?style=for-the-badge)](../../)
+[![Issues](https://img.shields.io/github/issues/FHPWA/Brainf.svg?style=for-the-badge)](../../issues)
+[![License](https://img.shields.io/github/license/FHPWA/Brainf.svg?style=for-the-badge)](/LICENSE.md)
+[![Commit activity](https://img.shields.io/github/commit-activity/m/FHPWA/Brainf.svg?style=for-the-badge)](../../commits/master)
+[![Last commit](https://img.shields.io/github/last-commit/FHPWA/Brainf.svg?style=for-the-badge)](../../commits/master)
 
+# Brainf
 
-# PWA.Brainf
+<img src="readme-assets/icons/name.png" alt="Project Icon" width="750">
+
 
 <img src="readme-assets/icons/name.png" alt="Project Icon" width="750">
 
@@ -18,7 +17,7 @@ An online version of an Android application that I released in
 the hope that it will be more accessible. Run programs written
 in the Brainf programming language.
 
-Find the site on https://FredHappyface.github.io/PWA.Brainf
+Find the site on https://FHPWA.github.io/brainf/
 
 ## Language information
 PWA.Brainf is built with HTML5, CSS3 and JavaScript
