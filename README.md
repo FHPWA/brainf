@@ -1,5 +1,5 @@
 [![Github top language](https://img.shields.io/github/languages/top/FHPWA/Brainf.svg?style=for-the-badge)](../../)
-[![Codacy grade](https://img.shields.io/codacy/grade/[codacy-proj-id].svg?style=for-the-badge)](https://www.codacy.com/manual/FHPWA/Brainf)
+[![Codacy grade](https://img.shields.io/codacy/grade/99c04fcc2a4b40b8ae182ae33275ce58.svg?style=for-the-badge)](https://www.codacy.com/gh/FHPWA/Brainf)
 [![Repository size](https://img.shields.io/github/repo-size/FHPWA/Brainf.svg?style=for-the-badge)](../../)
 [![Issues](https://img.shields.io/github/issues/FHPWA/Brainf.svg?style=for-the-badge)](../../issues)
 [![License](https://img.shields.io/github/license/FHPWA/Brainf.svg?style=for-the-badge)](/LICENSE.md)
