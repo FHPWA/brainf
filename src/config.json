@@ -1,16 +1,13 @@
 {
 	"base": {
-		"projectFullName": "brainf",
-		"projectShortName": "Brainf",
+		"projectName": "Brainf",
 		"stylesNamespace": "brainf",
+		"namespace": "brainf",
 		"projectColour": "#e23834",
 		"isNavigation": false,
 		"precacheFiles": [
 			{
 				"fileName": "brainf/"
-			},
-			{
-				"fileName": "brainf/index.html"
 			},
 			{
 				"fileName": "brainf/scripts/brainf.js"
