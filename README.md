@@ -12,7 +12,7 @@ An online version of an Android application that I released in
 the hope that it will be more accessible. Run programs written
 in the Brainf programming language.
 
-Find the site on https://fredhappyface.com/brainf/
+Find the site on https://fhpwa.github.io/brainf/
 
 ## Language information
 PWA.Brainf is built with HTML5, CSS3 and JavaScript
