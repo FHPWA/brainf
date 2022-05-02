@@ -1,0 +1,96 @@
+---
+permalink: js/script.js
+---
+
+const MAX_FILE_SIZE = 1024 * 1024 * 4
+
+
+/**
+ * Download a stream of chars and set a filename
+ * @param {string} filename
+ * @param {string} chars
+ * @return {void} none
+ */
+ function download(filename, chars) { // eslint-disable-line no-unused-vars
+	if(filename.length === 0){
+		filename = "program.bf"
+	}
+	const blob = new Blob([chars], {type: "application/octet-stream"})
+	const blobURL = window.URL.createObjectURL(blob)
+	const link = document.createElement("a")
+	link.download = filename
+	link.href = blobURL
+	link.style.display = "none"
+	document.body.appendChild(link)
+	link.click()
+	document.body.removeChild(link)
+	return
+}
+
+/**
+ * Open the system file selector and openfiles a stream of chars with a filename
+for each file
+ * @param {blob[]} files
+ * @param {string[]} targets
+ * @return {string[]} fileNames
+ */
+function openfiles(files, targets) {
+	const output = []
+	for (let index = 0; index < files.length; index++) {
+		const file = files[index]
+		const reader = new FileReader()
+		reader.readAsText(file, "UTF-8")
+		reader.onload = function (event) {
+			const fileContents = event.target.result
+			if (fileContents.length < MAX_FILE_SIZE) {
+				document.getElementById(targets[index]).value = fileContents
+			} else {
+				window.alert("File must be smaller than 1MB")
+			}
+		}
+		output.push(file.name)
+	}
+	return output
+}
+/**
+ * @param {string} stringToCopy
+ * @return {void}
+ */
+async function copyToClipboard(stringToCopy) {
+	if (navigator.clipboard) {
+		try {
+			await navigator.clipboard.writeText(stringToCopy)
+		} catch (err) {
+			window.alert("Failed to Copy: " + err)
+		}
+	}
+	return
+}
+/**
+ * Copy the contents of the output element
+ * @return {void}
+ */
+function copy() {	// eslint-disable-line no-unused-vars
+	let output = document.getElementById("output")
+	output.select()
+	output.setSelectionRange(0, 99999) /* For mobile devices */
+	copyToClipboard(output.value)
+	return
+}
+
+/**
+ *
+ */
+function downloadBf() {	// eslint-disable-line no-unused-vars
+	download(document.getElementById("filename").value, document.getElementById("code").value)
+	return
+}
+
+/**
+ *
+ */
+function openBrainfSource() {	// eslint-disable-line no-unused-vars
+	let fileData = openfiles(document.getElementById("files").files, ["code"])
+	document.getElementById("filename").value = fileData[0]
+	return
+}

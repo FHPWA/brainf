@@ -1,0 +1,34 @@
+---
+title: Brainf Interpreter
+layout: base
+tags: page
+permalink: index.html
+scripts: ["script.js", "brainf.js"]
+date: 2000-01-01
+---
+
+<div>
+	<button onclick="downloadBf()">💾 Save to Downloads</button>
+	<label type="button" for="files">📂 Open Brainf Source</label><br />
+	<input type="file" id="files" style="display: none" onchange="openBrainfSource()" />
+</div>
+<form>
+	<label for="filename">Filename:</label><br />
+	<input type="text" placeholder="Filename" id="filename" />
+	<label for="code">Code:</label><br />
+	<textarea placeholder="Code" rows="20" cols="1" id="code"></textarea>
+	<p>Mode:</p>
+	<input type="radio" name="var" value="1" id="mode-ascii" checked="checked" /><label
+		for="mode-ascii"
+		>ASCII</label
+	><br />
+	<input type="radio" name="var" value="2" id="mode-integer" /><label for="mode-integer"
+		>Integer</label
+	><br />
+	<label for="output">Output:</label><br />
+	<textarea rows="4" cols="1" id="output"></textarea>
+</form>
+<div>
+	<button onclick="brainfBF()">🏃‍♂️ Run</button>
+	<button onclick="copy()">📋 Copy Output</button>
+</div>

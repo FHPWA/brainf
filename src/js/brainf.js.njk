@@ -1,0 +1,289 @@
+---
+permalink: js/brainf.js
+---
+
+const MAX_SIZE = 1024
+const MAX_INPUT = 32
+const MAX_COMPLEXITY = 1024
+let calls = 0
+let inputCounter = 0
+
+
+/*
+Brainf interpreter here
+*/
+
+
+/**
+ * Increment value function "+"
+ * @param {number[]} array
+ * @param {number} arrayPointer
+ * @return {number} updatedValue
+ */
+function brainfPlus(array, arrayPointer) {
+	calls++
+
+	if (array[arrayPointer] < Number.MAX_SAFE_INTEGER) {
+		return ++array[arrayPointer]
+	} else {
+		return array[arrayPointer]
+	}
+}
+
+/**
+ * Decrement value function "-"
+ * @param {number[]} array
+ * @param {number} arrayPointer
+ * @return {number} updatedValue
+ */
+function brainfMinus(array, arrayPointer) {
+	calls++
+
+	if (array[arrayPointer] > Number.MIN_SAFE_INTEGER) {
+		return --array[arrayPointer]
+	} else {
+		return array[arrayPointer]
+	}
+}
+
+/**
+ * Increment array pointer function ">"
+ * @param {number} arrayPointer
+ * @return {number} updatedArrayPointer
+ */
+function brainfGreaterThan(arrayPointer) {
+	if (arrayPointer < MAX_SIZE) {
+		return ++arrayPointer
+	} else {
+		return arrayPointer
+	}
+}
+
+/**
+ * Decrement array pointer function "<"
+ * @param {number} arrayPointer
+ * @return {number} updatedArrayPointer
+ */
+function brainfLessThan(arrayPointer) {
+	calls++
+	if (arrayPointer > 0) {
+		return --arrayPointer
+	} else {
+		return arrayPointer
+	}
+}
+
+/**
+ * Print value as an integer or a string
+ * @param {string} mode
+ * @param {string} target
+ * @param {number[]} array
+ * @param {number} arrayPointer
+ * @return {void}
+ */
+function brainfPrint(mode, target, array, arrayPointer) {
+	calls++
+	switch (mode) {
+	case "ASCII": {
+		document.getElementById(target).value +=
+			String.fromCharCode(array[arrayPointer])
+		break
+	}
+	case "INT": {
+		document.getElementById(target).value += array[arrayPointer] + ", "
+		break
+	}
+	}
+	return
+}
+
+/**
+ * Get the user input as an integer or a string
+ * @param {string} mode
+ * @param {number[]} array
+ * @param {number} arrayPointer
+ * @return {number} updatedInputCounter
+ */
+function brainfInput(mode, array, arrayPointer) {
+	calls++
+	inputCounter++
+	// Terminate if input is called too many times
+	if (inputCounter >= MAX_INPUT) {
+		window.alert("Input called too many times")
+		return -1
+	}
+	const reader = window.prompt("Input (" + mode + "):", "")
+	if (reader.length < 1) {
+		window.alert("Input required")
+		return -1
+	}
+	switch (mode) {
+	case "ASCII": {
+		array[arrayPointer] = reader.charCodeAt(0)
+		break
+	}
+	case "INT": {
+		array[arrayPointer] = parseInt(reader, 10)
+		break
+	}
+	}
+	return 0
+}
+
+/**
+ * if the byte at the data pointer is zero, then instead of moving the
+ * instruction pointer forward to the next command, jump it forward to
+ * the command after the matching ] command.
+ * @param {string} instructions
+ * @param {number} instructionPointer
+ * @param {number[]} array
+ * @param {number} arrayPointer
+ * @return {number} updatedInstructionPointer
+ */
+function brainfLeftBracket(instructions, instructionPointer, array,
+	arrayPointer) {
+	calls++
+
+	if (array[arrayPointer] === 0) {
+		let brackets = 0
+		while (instructionPointer < instructions.length) {
+			// Increment the pointer and refresh the current instruction
+			instructionPointer++
+			const currentInstruction = instructions.charAt(instructionPointer)
+			// Opening bracket or A closing bracket is encountered
+			if (currentInstruction === "[") {
+				brackets++
+			} else if (currentInstruction === "]") {
+				// If this is the matching bracket
+				if (brackets === 0) {
+					break
+				} else {
+					brackets--
+				}
+			}
+		}
+	}
+	return instructionPointer
+}
+
+/**
+ * if the byte at the data pointer is nonzero, then instead of moving the
+ * instruction pointer forward to the next command, jump it back to the
+ * command after the matching [ command.
+ * @param {string} instructions
+ * @param {number} instructionPointer
+ * @param {number[]} array
+ * @param {number} arrayPointer
+ * @return {number} updatedInstructionPointer
+ */
+function brainfRightBracket(instructions, instructionPointer, array,
+	arrayPointer) {
+	calls++
+
+	if (array[arrayPointer] !== 0) {
+		let brackets = 0
+		while (instructionPointer >= 0) {
+			// Decrement the pointer and refresh the current instruction
+			instructionPointer--
+			const currentInstruction = instructions.charAt(instructionPointer)
+			// Closing bracket or an opening bracket is encountered
+			if (currentInstruction === "]") {
+				brackets++
+			} else if (currentInstruction === "[") {
+				// If this is the matching bracket
+				if (brackets === 0) {
+					break
+				} else {
+					brackets--
+				}
+			}
+		}
+	}
+	return instructionPointer
+}
+
+
+/**
+ * Run the brainf program
+ * @param {string} instructions
+ * @param {string} mode
+ * @param {string} target
+ */
+function brainf(instructions, mode, target) {
+	document.getElementById(target).value = ""
+	calls = 0
+	inputCounter = 0
+	// Define variables
+	const array = new Array(MAX_SIZE).fill(0)
+	let arrayPointer = 0
+	let instructionPointer = 0
+	const instructionLen = instructions.length
+
+	// While still reading instructions
+	while (instructionPointer < instructionLen) {
+		const currentInstruction = instructions.charAt(instructionPointer)
+
+		// Define < operator
+		if (currentInstruction === "<") {
+			arrayPointer = brainfLessThan(arrayPointer)
+		}
+
+		// Define > operator
+		if (currentInstruction === ">") {
+			arrayPointer = brainfGreaterThan(arrayPointer)
+		}
+
+		// Define - operator
+		if (currentInstruction === "-") {
+			array[arrayPointer] = brainfMinus(array, arrayPointer)
+		}
+
+		// Define + operator
+		if (currentInstruction === "+") {
+			array[arrayPointer] = brainfPlus(array, arrayPointer)
+		}
+
+		// Define . operator
+		if (currentInstruction === ".") {
+			brainfPrint(mode, target, array, arrayPointer)
+		}
+
+		// Define , operator
+		if (currentInstruction === ",") {
+			const exitCode = brainfInput(mode, array, arrayPointer)
+			if (exitCode < 0) {
+				return
+			}
+		}
+
+		// Define [ operator
+		if (currentInstruction === "[") {
+			instructionPointer = brainfLeftBracket(instructions,
+				instructionPointer, array, arrayPointer)
+		}
+
+		// Define ] operator
+		if (currentInstruction === "]") {
+			instructionPointer = brainfRightBracket(instructions,
+				instructionPointer, array, arrayPointer)
+		}
+
+		// Increment the instruction
+		instructionPointer++
+
+		if (calls > MAX_COMPLEXITY) {
+			window.alert("Too many calls")
+			return
+		}
+	}
+
+}
+
+/**
+ * Call brainf with page specific params
+ */
+function brainfBF() { // eslint-disable-line no-unused-vars
+	brainf(document.getElementById("code").value,
+		(document.getElementById("mode-ascii").checked ? "ASCII" : "INT"),
+		"output")
+}

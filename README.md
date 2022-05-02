@@ -1,45 +1,64 @@
 [![Github top language](https://img.shields.io/github/languages/top/FHPWA/Brainf.svg?style=for-the-badge)](../../)
-[![Codacy grade](https://img.shields.io/codacy/grade/99c04fcc2a4b40b8ae182ae33275ce58.svg?style=for-the-badge)](https://www.codacy.com/gh/FHPWA/Brainf)
+[![Codacy grade](https://img.shields.io/codacy/grade/6c37d3696b1d465093212744b255b8e9.svg?style=for-the-badge)](https://www.codacy.com/gh/FHPWA/Brainf)
 [![Repository size](https://img.shields.io/github/repo-size/FHPWA/Brainf.svg?style=for-the-badge)](../../)
 [![Issues](https://img.shields.io/github/issues/FHPWA/Brainf.svg?style=for-the-badge)](../../issues)
 [![License](https://img.shields.io/github/license/FHPWA/Brainf.svg?style=for-the-badge)](/LICENSE.md)
 [![Commit activity](https://img.shields.io/github/commit-activity/m/FHPWA/Brainf.svg?style=for-the-badge)](../../commits/master)
 [![Last commit](https://img.shields.io/github/last-commit/FHPWA/Brainf.svg?style=for-the-badge)](../../commits/master)
 
+<!-- omit in TOC -->
+# Brainf
+
 <img src="readme-assets/icons/name.png" alt="Project Icon" width="750">
 
-An online version of an Android application that I released in
-the hope that it will be more accessible. Run programs written
-in the Brainf programming language.
+Interpreter for the 'Brainf' programming language
 
-Find the site on https://fhpwa.github.io/brainf/
+- [Features](#features)
+- [Download Project](#download-project)
+	- [Clone](#clone)
+		- [Using The Command Line](#using-the-command-line)
+		- [Using GitHub Desktop](#using-github-desktop)
+	- [Download Zip File](#download-zip-file)
+- [Community Files](#community-files)
+	- [Licence](#licence)
+	- [Changelog](#changelog)
+	- [Code of Conduct](#code-of-conduct)
+	- [Contributing](#contributing)
+	- [Security](#security)
+	- [Support](#support)
+	- [Rationale](#rationale)
 
-## Language information
-PWA.Brainf is built with HTML5, CSS3 and JavaScript
+## Features
 
-## Changelog
-See the [CHANGELOG](/CHANGELOG.md) for more information.
+Create, edit, save and run brainf code/ text files in the browser
 
+## Download Project
 
-## Download
 ### Clone
+
 #### Using The Command Line
+
 1. Press the Clone or download button in the top right
 2. Copy the URL (link)
-3. Open the command line and change directory to where you wish to clone to
+3. Open the command line and change directory to where you wish to
+	 clone to
 4. Type 'git clone' followed by URL in step 2
-```bash
-$ git clone https://github.com/[user-name]/[repository]
-```
 
-More information can be found at https://help.github.com/en/articles/cloning-a-repository
+	 ```bash
+	 git clone https://github.com/FHPythonUtils/PyRlottie
+	 ```
 
-#### Using GitHub Deskto
+More information can be found at
+https://help.github.com/en/articles/cloning-a-repository
+
+#### Using GitHub Desktop
+
 1. Press the Clone or download button in the top right
 2. Click open in desktop
 3. Choose the path for where you want and click Clone
 
-More information can be found at https://help.github.com/en/desktop/contributing-to-projects/cloning-a-repository-from-github-to-github-desktop
+More information can be found at
+https://help.github.com/en/desktop/contributing-to-projects/cloning-a-repository-from-github-to-github-desktop
 
 ### Download Zip File
 
@@ -47,78 +66,49 @@ More information can be found at https://help.github.com/en/desktop/contributing
 2. Extract the zip archive
 3. Copy/ move to the desired location
 
+## Community Files
 
-## Licence
+### Licence
+
 MIT License
-Copyright (c) Kieran W
+Copyright (c) FredHappyface
 (See the [LICENSE](/LICENSE.md) for more information.)
 
-## Browser Support
+### Changelog
 
-### Supported
-FredHappyface PWAs are built with the following browsers in mind:
-Google Chrome
+See the [Changelog](/CHANGELOG.md) for more information.
 
-<img src="readme-assets/browsers/chrome.png" alt="Google Chrome" width="200">
+### Code of Conduct
 
-Chromium Based Browsers
+Online communities include people from many backgrounds. The _Project_
+contributors are committed to providing a friendly, safe and welcoming
+environment for all. Please see the
+[Code of Conduct](https://github.com/FHPythonUtils/.github/blob/master/CODE_OF_CONDUCT.md)
+for more information.
 
-<img src="readme-assets/browsers/chromium.png" alt="Chromium" width="200">
+### Contributing
 
-Safari
+Contributions are welcome, please see the
+[Contributing Guidelines](https://github.com/FHPythonUtils/.github/blob/master/CONTRIBUTING.md)
+for more information.
 
-<img src="readme-assets/browsers/safari.png" alt="Safari" width="200">
+### Security
 
-Microsoft Edge (Chromium)
+Thank you for improving the security of the project, please see the
+[Security Policy](https://github.com/FHPythonUtils/.github/blob/master/SECURITY.md)
+for more information.
 
-<img src="readme-assets/browsers/edge.png" alt="Microsoft Edge (Chromium)" width="200">
+### Support
 
+Thank you for using this project, I hope it is of use to you. Please be aware that
+those involved with the project often do so for fun along with other commitments
+(such as work, family, etc). Please see the
+[Support Policy](https://github.com/FHPythonUtils/.github/blob/master/SUPPORT.md)
+for more information.
 
-### Unsupported
-FredHappyface PWAs are not designed for the following browsers
-(though they may still run as expected in some cases, such as on
-Firefox). Functionality and visuals may not work as expected:
-Firefox
+### Rationale
 
-<img src="readme-assets/browsers/firefox.png" alt="Firefox" width="200">
-
-Microsoft Edge (EdgeHTML)
-
-<img src="readme-assets/browsers/ms-edge.png" alt="Microsoft Edge (EdgeHTML)" width="200">
-
-Internet Explorer
-
-<img src="readme-assets/browsers/ie.png" alt="Internet Explorer" width="200">
-
-TOR Browser
-
-<img src="readme-assets/browsers/tor.png" alt="TOR Browser" width="200">
-
-Other Browsers
-
-<img src="readme-assets/browsers/browser.png" alt="Other Browsers" width="200">
-
-
-## Screenshots
-
-### Desktop
-|Screenshots|
-|:-:|
-| <img src="readme-assets/screenshots/desktop/screenshot-0.png" alt="Screenshot 1" width="600"> |
-| <img src="readme-assets/screenshots/desktop/screenshot-1.png" alt="Screenshot 2" width="600"> |
-| <img src="readme-assets/screenshots/desktop/screenshot-2.png" alt="Screenshot 3" width="600"> |
-
-
-
-### Mobile
-|Screenshots| |
-|:-:|:-:|
-| <img src="readme-assets/screenshots/mobile/screenshot-0.png" alt="Screenshot 1" width="300"> | <img src="readme-assets/screenshots/mobile/screenshot-1.png" alt="Screenshot 2" width="300"> |
-| <img src="readme-assets/screenshots/mobile/screenshot-2.png" alt="Screenshot 3" width="300"> | <img src="readme-assets/screenshots/mobile/screenshot-3.png" alt="Screenshot 4" width="300"> |
-
-
-
-### Themes
-|Light|Dark|Black|
-|:-:|:-:|:-:|
-| <img src="readme-assets/screenshots/themes/theme-0.png" alt="Theme 1" width="200"> | <img src="readme-assets/screenshots/themes/theme-1.png" alt="Theme 2" width="200"> | <img src="readme-assets/screenshots/themes/theme-2.png" alt="Theme 2" width="200"> |
+The rationale acts as a guide to various processes regarding projects such as
+the versioning scheme and the programming styles used. Please see the
+[Rationale](https://github.com/FHPythonUtils/.github/blob/master/RATIONALE.md)
+for more information.
