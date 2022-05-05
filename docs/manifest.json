@@ -5,7 +5,7 @@
 	"start_url": "index.html",
 	"display": "standalone",
 	"background_color": "#000000",
-	"theme_color": "#e23834",
+	"theme_color": "#db2525",
 	"icons": [
 		{
 			"src": "images/appicons/round-192.png",
